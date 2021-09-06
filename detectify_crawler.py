@@ -39,12 +39,6 @@ def get_data(ID):
         RequestResponse = driver.find_element_by_xpath('/html/body/div[2]/div/div[1]/div/div/div[5]').text
     except:
         RequestResponse = ""
-
-    # General = driver.find_element_by_xpath('/html/body/div[2]/div/div[1]/div/div/div[5]/div/div[1]/div[2]/div').text
-    # Request = driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/div/div[5]/div/div[2]').text
-    # Request = driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/div/div[5]/div/div[2]/div[2]/div')
-    # Response = driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/div/div[5]/div/div[3]/div[2]/div')
-
     try:
         Details = driver.find_element_by_xpath('/html/body/div[2]/div/div[1]/div/div/div[6]').text
     except:
@@ -53,28 +47,7 @@ def get_data(ID):
         References = driver.find_element_by_xpath('/html/body/div[2]/div/div[1]/div/div/div[7]').text
     except:
         References = ""
-    # return {
-    #     "Vulnerability ID": ID,
-    #     "Found at": FoundAt,
-    #     "Severity" : Severity,
-    #     "Status" : Status,
-    #     "CVSS Score" : CVSSScore,
-    #     "Meaning" : Meaning,
-    #     "General" : RequestResponse,
-    #     "Details": Details,
-    #     "References": References
-    # }
-    # data = "{}, {}, {}, {}, {}, {}, {}, {}, {}".format(
-    #     ID,
-    #     FoundAt,
-    #     Severity,
-    #     Status,
-    #     CVSSScore,
-    #     Meaning,
-    #     RequestResponse,
-    #     Details,
-    #     References
-    # )
+
     data = [
         ID,
         FoundAt,
@@ -113,7 +86,7 @@ options.add_argument("start-maximized")
 driver = WebDriver(r"Cchromedriver.exe",options=options) #path to webdriver chromedriver.exe
 driver.implicitly_wait(15)
 driver.get("https://detectify.com/app/vulnerabilities")
-#Log in with Google SSO
+#Log in
 driver.find_element_by_xpath('/html/body/div[2]/div[1]/div[1]/div[2]/form/div[1]/input').send_keys("user@login")
 driver.find_element_by_xpath('/html/body/div[2]/div[1]/div[1]/div[2]/form/div[2]/div/input').send_keys("passWord")
 driver.find_element_by_xpath('/html/body/div[2]/div[1]/div[1]/div[2]/button/span').click()
